@@ -1,0 +1,19 @@
+{
+  "name": "dsh-llm-antigravity",
+  "version": "0.1.0",
+  "description": "Native dsh LLM adapter: Google Cloud Code Assist (Antigravity) direct protocol, ported from pi-antigravity semantics. In-process, no sidecar.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "license": "MIT",
+  "dependencies": {}
+}
