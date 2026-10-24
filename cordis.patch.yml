@@ -1,0 +1,7 @@
+- insert:
+    - id: llm-antigravity-tui
+      name: dsh-tui-antigravity
+      inject:
+        - llm
+        - commands
+        - userQuestions

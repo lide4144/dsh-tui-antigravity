@@ -1,6 +1,14 @@
 {
-  "name": "dsh-llm-antigravity",
-  "version": "0.1.0",
+  "name": "dsh-tui-antigravity",
+  "version": "0.1.0-dev.1",
+  "engines": { "node": ">=22", "dsh": "0.2.1-rc.3" },
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
+  "scripts": {
+    "test": "node test/run.mjs && node test/auth.mjs && node test/adapter-safety.mjs && node test/replay-contract.mjs",
+    "check": "node --check lib/index.js && node --check lib/auth.js && node --check lib/auth-store.js && npm test",
+    "test:host": "node test/host-contract.mjs"
+  },
+  "peerDependencies": { "@deepseek-ai/dsh-llm": "0.2.1-rc.3" },
   "description": "Native dsh LLM adapter: Google Cloud Code Assist (Antigravity) direct protocol, ported from pi-antigravity semantics. In-process, no sidecar.",
   "type": "module",
   "main": "lib/index.js",
@@ -8,12 +16,19 @@
     ".": {
       "default": "./lib/index.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
   },
   "files": [
     "lib",
-    "src"
+    "src",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
   ],
+  "repository": { "type": "git", "url": "https://github.com/lide4144/dsh-tui-antigravity.git" },
+  "bugs": { "url": "https://github.com/lide4144/dsh-tui-antigravity/issues" },
+  "homepage": "https://github.com/lide4144/dsh-tui-antigravity#readme",
   "license": "MIT",
   "dependencies": {}
 }
