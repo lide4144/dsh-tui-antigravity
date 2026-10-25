@@ -99,7 +99,11 @@ const userMsg = (text) => ({
     modelPublicId: "gemini-3.8-flash",
     runtimeModel: "gemini-3.8-flash-medium",
     effort: "medium",
-    messages: [userMsg("please"), assistantMsg],
+    messages: [
+      userMsg("please"),
+      assistantMsg,
+      { id: "t1", role: "tool", toolCallId: "call-1", content: [{ type: "text", text: "ok" }], source: { kind: "tool", callId: "call-1" } },
+    ],
   });
   const modelParts = body.request.contents.find((c) => c.role === "model").parts;
   assert.ok(modelParts[0].functionCall, "expected functionCall part");

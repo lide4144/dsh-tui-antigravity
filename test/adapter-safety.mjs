@@ -30,7 +30,8 @@ function cleaned() { for (const r of resources) { assert.equal(r.cancel, 1); ass
 try {
   for (const status of [400, 401, 403, 429, 500, 501]) {
     reset(() => ({ ok: false, status, text: async () => 'synthetic failure' }));
-    await assert.rejects(collect(adapter()), e => e.code === (status === 401 || status === 403 ? 'AUTH' : status === 429 ? 'RATE_LIMIT' : 'TRANSPORT'));
+    await assert.rejects(collect(adapter()), e => e.code === (status === 400 ? 'INVALID_REQUEST' : status === 401 || status === 403 ? 'AUTH' : status === 429 ? 'RATE_LIMIT' : 'TRANSPORT')
+      && !e.message.includes('synthetic failure')); // non-JSON bodies are never echoed
     assert.equal(calls, 1, `HTTP ${status} must not replay`);
   }
   for (const status of [404, 502, 503, 504, 'transport']) {

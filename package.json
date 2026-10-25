@@ -4,7 +4,7 @@
   "engines": { "node": ">=22", "dsh": "0.2.1-rc.3" },
   "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
   "scripts": {
-    "test": "node test/run.mjs && node test/auth.mjs && node test/adapter-safety.mjs && node test/replay-contract.mjs",
+    "test": "node test/run.mjs && node test/auth.mjs && node test/adapter-safety.mjs && node test/replay-contract.mjs && node test/tool-continuation.mjs",
     "check": "node --check lib/index.js && node --check lib/auth.js && node --check lib/auth-store.js && npm test",
     "test:host": "node test/host-contract.mjs"
   },
